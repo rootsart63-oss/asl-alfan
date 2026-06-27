@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أصل الفن لتنجيد وتكنولوجيا السيارات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ============ TOKENS ============ */
+:root{
+  --leather-black:#15110d;
+  --leather-dark:#241a13;
+  --leather-mid:#3d2a1c;
+  --tan:#c9933f;
+  --tan-bright:#e8ab53;
+  --thread-copper:#b97a3d;
+  --cream:#f3ead9;
+  --cream-dim:#cfc2a8;
+  --stitch-red:#7a1f1f;
+  --line:rgba(243,234,217,0.14);
+
+  --font-display:'Cairo', sans-serif;
+  --font-body:'Tajawal', sans-serif;
+
+  --container:1180px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--leather-black);
+  color:var(--cream);
+  font-family:var(--font-body);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit; cursor:pointer; border:none;}
+
+.wrap{max-width:var(--container); margin:0 auto; padding:0 24px;}
+
+/* leather grain texture overlay */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:2000;
+  opacity:0.05;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0 2px, rgba(255,255,255,0.4) 2px 3px),
+    repeating-linear-gradient(-45deg, transparent 0 2px, rgba(0,0,0,0.5) 2px 3px);
+  mix-blend-mode:overlay;
+}
+
+/* ============ STITCH DIVIDER (signature element) ============ */
+.stitch{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:0;
+  height:14px;
+  position:relative;
+}
+.stitch span{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--thread-copper);
+  opacity:0.55;
+  flex-shrink:0;
+}
+.stitch::before, .stitch::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:repeating-linear-gradient(90deg, var(--thread-copper) 0 6px, transparent 6px 12px);
+  opacity:0.5;
+}
+
+/* ============ NAV ============ */
+header{
+  position:fixed; top:0; left:0; right:0;
+  z-index:1000;
+  background:linear-gradient(to bottom, rgba(21,17,13,0.97), rgba(21,17,13,0.85));
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px;
+  max-width:var(--container);
+  margin:0 auto;
+}
+.logo{
+  display:flex; align-items:center; gap:12px;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:1.25rem;
+  color:var(--cream);
+}
+.logo .mark{
+  width:42px;height:42px;
+  border:2px solid var(--tan);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  background:var(--leather-mid);
+}
+.logo .mark::after{
+  content:"";
+  position:absolute; inset:5px;
+  border:1.5px dashed var(--thread-copper);
+  border-radius:4px;
+  opacity:0.7;
+}
+.logo .mark span{font-size:1.1rem; color:var(--tan-bright); position:relative; z-index:1;}
+.logo .name small{display:block; font-size:0.62rem; font-weight:500; color:var(--cream-dim); letter-spacing:0.5px;}
+
+.nav-links{display:flex; gap:32px; font-weight:600; font-size:0.95rem;}
+.nav-links a{position:relative; padding:6px 0; transition:color .25s;}
+.nav-links a:hover{color:var(--tan-bright);}
+.nav-links a::after{
+  content:""; position:absolute; bottom:0; right:0; left:0; height:2px;
+  background:var(--tan-bright); transform:scaleX(0); transition:transform .3s;
+}
+.nav-links a:hover::after{transform:scaleX(1);}
+
+.nav-cta{
+  display:flex; align-items:center; gap:8px;
+  background:#25D366;
+  color:#0b1f12;
+  padding:11px 20px;
+  border-radius:8px;
+  font-weight:700;
+  font-size:0.92rem;
+  transition:transform .25s, box-shadow .25s;
+  box-shadow:0 4px 14px rgba(37,211,102,0.25);
+}
+.nav-cta:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(37,211,102,0.35);}
+
+.burger{display:none; flex-direction:column; gap:5px; background:none;}
+.burger span{width:26px; height:2px; background:var(--cream);}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:140px 0 80px;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201,147,63,0.16), transparent 55%),
+    radial-gradient(ellipse at 10% 90%, rgba(122,31,31,0.15), transparent 50%),
+    linear-gradient(180deg, var(--leather-black), var(--leather-dark));
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0; bottom:0; left:-10%;
+  width:55%;
+  background:
+    repeating-linear-gradient(100deg, transparent 0 38px, rgba(201,147,63,0.05) 38px 40px),
+    repeating-linear-gradient(10deg, transparent 0 38px, rgba(201,147,63,0.04) 38px 40px);
+  opacity:0.6;
+  transform:skewX(-6deg);
+}
+.hero-grid{
+  position:relative; z-index:2;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:60px;
+  align-items:center;
+}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:0.85rem; font-weight:700; color:var(--tan-bright);
+  letter-spacing:0.5px;
+  margin-bottom:22px;
+  border:1px solid rgba(201,147,63,0.4);
+  padding:7px 16px;
+  border-radius:30px;
+  background:rgba(201,147,63,0.07);
+}
+.eyebrow .dot{width:7px;height:7px;background:var(--tan-bright); border-radius:50%; box-shadow:0 0 8px var(--tan-bright);}
+
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.4rem, 4.6vw, 3.9rem);
+  font-weight:800;
+  line-height:1.18;
+  margin-bottom:22px;
+}
+.hero h1 .accent{color:var(--tan-bright); position:relative; display:inline-block;}
+
+.hero p.lead{
+  font-size:1.13rem;
+  color:var(--cream-dim);
+  max-width:540px;
+  margin-bottom:34px;
+}
+.hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:46px;}
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 28px;
+  border-radius:9px;
+  font-weight:700;
+  font-size:1rem;
+  transition:transform .25s, box-shadow .25s, background .25s;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--tan-bright), var(--tan));
+  color:#1a1209;
+  box-shadow:0 10px 28px rgba(201,147,63,0.28);
+}
+.btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 32px rgba(201,147,63,0.4);}
+.btn-ghost{
+  border:1.5px solid rgba(243,234,217,0.3);
+  color:var(--cream);
+}
+.btn-ghost:hover{border-color:var(--tan-bright); color:var(--tan-bright); background:rgba(201,147,63,0.06);}
+
+.hero-stats{
+  display:flex; gap:34px; flex-wrap:wrap;
+}
+.hero-stats .stat b{
+  display:block;
+  font-family:var(--font-display);
+  font-size:1.9rem;
+  color:var(--tan-bright);
+  font-weight:800;
+}
+.hero-stats .stat span{font-size:0.85rem; color:var(--cream-dim);}
+
+/* hero visual: stitched leather card stack */
+.hero-visual{position:relative; height:480px;}
+.leather-card{
+  position:absolute;
+  border-radius:18px;
+  border:1px solid rgba(201,147,63,0.25);
+  background:linear-gradient(160deg, var(--leather-mid), var(--leather-dark));
+  box-shadow:0 30px 60px rgba(0,0,0,0.55);
+  overflow:hidden;
+}
+.leather-card.c1{width:88%; height:90%; top:0; right:0; z-index:2;}
+.leather-card.c2{width:60%; height:55%; bottom:-6%; left:-4%; z-index:1; opacity:0.85;}
+.leather-card img{width:100%; height:100%; object-fit:cover; opacity:0.92;}
+.leather-card .stitch-frame{
+  position:absolute; inset:10px;
+  border:1.5px dashed rgba(201,147,63,0.55);
+  border-radius:12px;
+  pointer-events:none;
+}
+.badge-float{
+  position:absolute;
+  top:24px; left:-18px;
+  background:var(--cream);
+  color:var(--leather-black);
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:800;
+  font-size:0.9rem;
+  box-shadow:0 12px 24px rgba(0,0,0,0.4);
+  z-index:3;
+  display:flex; align-items:center; gap:8px;
+}
+.badge-float .ic{color:var(--stitch-red); font-size:1.1rem;}
+
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.badge-float{animation:floatY 4.5s ease-in-out infinite;}
+
+/* ============ SECTION COMMON ============ */
+section{padding:100px 0;}
+.section-head{
+  text-align:center;
+  max-width:680px;
+  margin:0 auto 60px;
+}
+.section-head .eyebrow{margin-bottom:18px;}
+.section-head h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem, 3vw, 2.6rem);
+  font-weight:800;
+  margin-bottom:16px;
+}
+.section-head p{color:var(--cream-dim); font-size:1.05rem;}
+
+/* ============ SERVICES ============ */
+.services{background:var(--leather-dark);}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:26px;
+}
+.service-card{
+  background:var(--leather-black);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:34px 28px;
+  position:relative;
+  transition:transform .3s, border-color .3s;
+}
+.service-card:hover{transform:translateY(-6px); border-color:rgba(201,147,63,0.45);}
+.service-card .num{
+  font-family:var(--font-display);
+  font-size:0.8rem;
+  color:var(--thread-copper);
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:18px;
+  display:block;
+}
+.service-card .icon{
+  width:54px; height:54px;
+  border-radius:12px;
+  background:linear-gradient(135deg, rgba(201,147,63,0.18), rgba(201,147,63,0.05));
+  border:1px solid rgba(201,147,63,0.3);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem;
+  margin-bottom:20px;
+  color:var(--tan-bright);
+}
+.service-card h3{font-family:var(--font-display); font-size:1.2rem; font-weight:700; margin-bottom:10px;}
+.service-card p{color:var(--cream-dim); font-size:0.95rem;}
+.service-card .order-link{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:16px; font-size:0.88rem; font-weight:700;
+  color:var(--tan-bright);
+}
+
+/* ============ GALLERY ============ */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:180px;
+  gap:16px;
+}
+.gallery-grid .g-item{
+  border-radius:14px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid var(--line);
+  background:var(--leather-mid);
+}
+.gallery-grid .g-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s;}
+.gallery-grid .g-item:hover img{transform:scale(1.08);}
+.gallery-grid .g-item.big{grid-column:span 2; grid-row:span 2;}
+.g-caption{
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.78), transparent);
+  padding:16px 14px 12px;
+  font-size:0.88rem;
+  font-weight:700;
+}
+
+/* ============ WHY / PROCESS ============ */
+.why{background:var(--leather-dark);}
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.why-list{display:flex; flex-direction:column; gap:22px;}
+.why-item{display:flex; gap:16px; align-items:flex-start;}
+.why-item .check{
+  width:30px; height:30px; flex-shrink:0;
+  border-radius:50%;
+  background:rgba(201,147,63,0.15);
+  border:1px solid rgba(201,147,63,0.4);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--tan-bright); font-weight:800; font-size:0.85rem;
+}
+.why-item h4{font-weight:700; margin-bottom:4px; font-size:1.05rem;}
+.why-item p{color:var(--cream-dim); font-size:0.92rem;}
+
+.why-visual{
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  position:relative;
+  min-height:420px;
+}
+.why-visual img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+
+/* ============ ORDER FORM ============ */
+.order{
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201,147,63,0.1), transparent 60%),
+    var(--leather-black);
+}
+.order-box{
+  max-width:760px;
+  margin:0 auto;
+  background:var(--leather-dark);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:46px;
+  box-shadow:0 30px 70px rgba(0,0,0,0.4);
+}
+.form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
+.field{display:flex; flex-direction:column; gap:8px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:0.88rem; font-weight:700; color:var(--cream-dim);}
+.field input, .field select, .field textarea{
+  background:var(--leather-black);
+  border:1px solid rgba(243,234,217,0.18);
+  border-radius:9px;
+  padding:13px 14px;
+  color:var(--cream);
+  font-family:inherit;
+  font-size:0.95rem;
+  outline:none;
+  transition:border-color .25s, box-shadow .25s;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  border-color:var(--tan-bright);
+  box-shadow:0 0 0 3px rgba(201,147,63,0.15);
+}
+.field textarea{resize:vertical; min-height:90px;}
+.field select{appearance:none; cursor:pointer;}
+
+.submit-row{display:flex; align-items:center; gap:16px; margin-top:8px; flex-wrap:wrap;}
+.btn-whats{
+  background:#25D366; color:#0b1f12;
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 30px; border-radius:10px; font-weight:800; font-size:1.02rem;
+  box-shadow:0 12px 28px rgba(37,211,102,0.3);
+  transition:transform .25s;
+}
+.btn-whats:hover{transform:translateY(-3px);}
+.form-note{font-size:0.85rem; color:var(--cream-dim);}
+
+/* ============ BRANCHES ============ */
+.branches{background:var(--leather-dark);}
+.branches-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+.branch-card{
+  background:var(--leather-black);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:30px;
+  text-align:center;
+  transition:transform .3s, border-color .3s;
+}
+.branch-card:hover{transform:translateY(-5px); border-color:rgba(201,147,63,0.4);}
+.branch-card .pin{
+  width:48px; height:48px; margin:0 auto 16px;
+  border-radius:50%;
+  background:rgba(201,147,63,0.15);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--tan-bright); font-size:1.3rem;
+}
+.branch-card h4{font-family:var(--font-display); font-size:1.15rem; font-weight:700; margin-bottom:8px;}
+.branch-card p{color:var(--cream-dim); font-size:0.9rem; margin-bottom:14px;}
+.branch-card a.map-link{color:var(--tan-bright); font-weight:700; font-size:0.9rem;}
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--leather-black);
+  border-top:1px solid var(--line);
+  padding:60px 0 30px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr;
+  gap:40px;
+  margin-bottom:40px;
+}
+.footer-grid h5{font-family:var(--font-display); font-size:1rem; font-weight:700; margin-bottom:18px; color:var(--tan-bright);}
+.footer-grid p{color:var(--cream-dim); font-size:0.92rem;}
+.footer-grid ul{display:flex; flex-direction:column; gap:10px;}
+.footer-grid ul a{color:var(--cream-dim); font-size:0.92rem; transition:color .25s;}
+.footer-grid ul a:hover{color:var(--tan-bright);}
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding-top:24px;
+  text-align:center;
+  color:var(--cream-dim);
+  font-size:0.85rem;
+}
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float{
+  position:fixed; bottom:26px; left:26px; z-index:900;
+  width:60px; height:60px; border-radius:50%;
+  background:#25D366; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.7rem;
+  box-shadow:0 10px 26px rgba(37,211,102,0.45);
+  animation:pulse 2.4s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{height:340px; margin-top:20px;}
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:1fr;}
+  .branches-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr; gap:28px;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+  .gallery-grid .g-item.big{grid-column:span 2; grid-row:span 1;}
+}
+@media (max-width:600px){
+  .form-row{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:20px;}
+  .order-box{padding:28px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <div class="mark"><span>✂</span></div>
+      <div class="name">أصل الفن<small>لتنجيد وتكنولوجيا السيارات</small></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">الخدمات</a></li>
+      <li><a href="#gallery">أعمالنا</a></li>
+      <li><a href="#why">ليه نحن</a></li>
+      <li><a href="#order">اطلب الخدمة</a></li>
+      <li><a href="#branches">الفروع</a></li>
+    </ul>
+    <a class="nav-cta" id="navWhats" href="#" target="_blank">
+      <span>💬</span> واتساب فوري
+    </a>
+    <button class="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> الرياض · جدة · الدمام</div>
+      <h1>تنجيد سيارات بحرفية <span class="accent">أصل الفن</span> الأصلية</h1>
+      <p class="lead">جلد طبيعي، خياطة دقيقة، وتقنيات سيارات متطورة — نحوّل مقصورة سيارتك إلى تجربة فاخرة تبدأ من أول غرزة.</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn btn-primary">📋 اطلب الخدمة الآن</a>
+        <a href="#gallery" class="btn btn-ghost">🖼 شاهد أعمالنا</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>+12</b><span>سنة خبرة</span></div>
+        <div class="stat"><b>3</b><span>فروع رئيسية</span></div>
+        <div class="stat"><b>+5000</b><span>سيارة منجدة</span></div>
+        <div class="stat"><b>100%</b><span>جلد أصلي</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="badge-float"><span class="ic">✓</span> ضمان الجودة</div>
+      <div class="leather-card c1">
+        <img id="heroImg1" src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=900&q=80" alt="تنجيد جلد سيارة">
+        <div class="stitch-frame"></div>
+      </div>
+      <div class="leather-card c2">
+        <img id="heroImg2" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="تفاصيل جلد">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span></div>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> خدماتنا</div>
+      <h2>كل ما تحتاجه سيارتك في مكان واحد</h2>
+      <p>من تنجيد المقاعد بالجلد الطبيعي إلى أحدث تقنيات السيارات — فريقنا المتخصص يقدم لك جودة لا تقبل المنافسة.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="num">01</span>
+        <div class="icon">🪑</div>
+        <h3>تنجيد المقاعد بالجلد</h3>
+        <p>تغيير وتفصيل مقاعد بالجلد الطبيعي أو الفاخر بدقة الخياطة والقصّات الأصلية لموديل سيارتك.</p>
+        <a href="#order" class="order-link">اطلب هذه الخدمة ←</a>
+      </div>
+
+      <div class="service-card">
+        <span class="num">02</span>
+        <div class="icon">🎛</div>
+        <h3>تنجيد الكونسول والأبواب</h3>
+        <p>تجديد الكونسول الداخلي وأبواب السيارة بخامات فاخرة تناسب طابع سيارتك ولمسة عصرية مميزة.</p>
+        <a href="#order" class="order-link">اطلب هذه الخدمة ←</a>
+      </div>
+
+      <div class="service-card">
+        <span class="num">03</span>
+        <div class="icon">🔧</div>
+        <h3>عزل وتعتيم السيارات</h3>
+        <p>عزل صوتي وحراري عالي الجودة مع خدمات تظليل الزجاج المعتمدة لراحة أكبر داخل المقصورة.</p>
+        <a href="#order" class="order-link">اطلب هذه الخدمة ←</a>
+      </div>
+
+      <div class="service-card">
+        <span class="num">04</span>
+        <div class="icon">📺</div>
+        <h3>تقنيات وشاشات السيارات</h3>
+        <p>تركيب أنظمة الترفيه والشاشات الذكية وأنظمة الصوت بأحدث التقنيات المتوافقة مع سيارتك.</p>
+        <a href="#order" class="order-link">اطلب هذه الخدمة ←</a>
+      </div>
+
+      <div class="service-card">
+        <span class="num">05</span>
+        <div class="icon">🛡</div>
+        <h3>حماية وتلميع السيارة</h3>
+        <p>حماية الطلاء بالنانو سيراميك وتلميع احترافي يحافظ على بريق سيارتك لفترة أطول.</p>
+        <a href="#order" class="order-link">اطلب هذه الخدمة ←</a>
+      </div>
+
+      <div class="service-card">
+        <span class="num">06</span>
+        <div class="icon">🧵</div>
+        <h3>تصميمات خاصة عند الطلب</h3>
+        <p>تصاميم تنجيد مخصصة بألوان وخيوط حسب رغبة العميل، لمسة فريدة لا تتكرر في أي سيارة أخرى.</p>
+        <a href="#order" class="order-link">اطلب هذه الخدمة ←</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span></div>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> معرض الأعمال</div>
+      <h2>من أعمالنا الفعلية</h2>
+      <p>نماذج حقيقية من تنجيد ومعالجة سيارات عملائنا في فروع الرياض، جدة، والدمام.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="g-item big"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80" alt="تنجيد مقاعد جلد"><div class="g-caption">تنجيد مقاعد جلد كامل</div></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=500&q=80" alt="تفصيل كونسول"><div class="g-caption">تفصيل كونسول</div></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500&q=80" alt="تظليل زجاج"><div class="g-caption">تظليل زجاج</div></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=500&q=80" alt="شاشات سيارة"><div class="g-caption">أنظمة شاشات</div></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=500&q=80" alt="عزل سيارة"><div class="g-caption">عزل صوتي وحراري</div></div>
+    </div>
+    <p style="text-align:center; color:var(--cream-dim); margin-top:24px; font-size:0.9rem;">
+      💡 ملاحظة: غيّر الصور دي بصور أعمالك الحقيقية — شرح بسيط تحت الموقع.
+    </p>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span></div>
+
+<!-- ============ WHY ============ -->
+<section class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-visual">
+      <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=700&q=80" alt="ورشة تنجيد">
+    </div>
+    <div>
+      <div class="eyebrow"><span class="dot"></span> ليه أصل الفن</div>
+      <h2 style="font-family:var(--font-display); font-size:clamp(1.7rem,3vw,2.3rem); font-weight:800; margin-bottom:28px;">حرفية تصنع الفرق في كل غرزة</h2>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="check">✓</div>
+          <div><h4>خامات أصلية 100%</h4><p>نستخدم جلوداً طبيعية وخيوطاً معتمدة لضمان متانة تدوم لسنوات.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="check">✓</div>
+          <div><h4>فنيون متخصصون</h4><p>فريق مدرّب على أحدث موديلات السيارات وتقنيات التنجيد العالمية.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="check">✓</div>
+          <div><h4>3 فروع لخدمتك</h4><p>الرياض، جدة، والدمام — قريبون منك بنفس مستوى الجودة في كل فرع.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="check">✓</div>
+          <div><h4>تواصل واتساب فوري</h4><p>أرسل طلبك مباشرة عبر واتساب واحصل على رد سريع من فريقنا.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span></div>
+
+<!-- ============ ORDER FORM ============ -->
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> اطلب الآن</div>
+      <h2>جهّز سيارتك للتميز</h2>
+      <p>عبّي بياناتك وسيارتك، وراح يتفتح واتساب برسالة جاهزة فيها كل التفاصيل تتبعت لينا فورًا.</p>
+    </div>
+
+    <div class="order-box">
+      <form id="orderForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="cname">الاسم الكامل</label>
+            <input type="text" id="cname" placeholder="مثال: محمد العتيبي" required>
+          </div>
+          <div class="field">
+            <label for="cphone">رقم التواصل</label>
+            <input type="tel" id="cphone" placeholder="05xxxxxxxx" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="ccity">الفرع المطلوب</label>
+            <select id="ccity" required>
+              <option value="">اختر الفرع</option>
+              <option value="الرياض">الرياض</option>
+              <option value="جدة">جدة</option>
+              <option value="الدمام">الدمام</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ccarmodel">نوع السيارة والموديل</label>
+            <input type="text" id="ccarmodel" placeholder="مثال: تويوتا كامري 2022" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full">
+            <label for="cservice">الخدمة المطلوبة</label>
+            <select id="cservice" required>
+              <option value="">اختر الخدمة</option>
+              <option value="تنجيد المقاعد بالجلد">تنجيد المقاعد بالجلد</option>
+              <option value="تنجيد الكونسول والأبواب">تنجيد الكونسول والأبواب</option>
+              <option value="عزل وتعتيم السيارة">عزل وتعتيم السيارة</option>
+              <option value="تقنيات وشاشات السيارات">تقنيات وشاشات السيارات</option>
+              <option value="حماية وتلميع السيارة">حماية وتلميع السيارة</option>
+              <option value="تصميم خاص">تصميم خاص حسب الطلب</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full">
+            <label for="cnotes">تفاصيل إضافية (اختياري)</label>
+            <textarea id="cnotes" placeholder="مثال: عايز لون الجلد بني، ولون الخيط كرارميل..."></textarea>
+          </div>
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn-whats">💬 إرسال الطلب عبر واتساب</button>
+          <span class="form-note">سيتم تحويلك لواتساب برسالة جاهزة بكل بياناتك — اضغط "إرسال" فقط.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span></div>
+
+<!-- ============ BRANCHES ============ -->
+<section class="branches" id="branches">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> فروعنا</div>
+      <h2>زورنا في أقرب فرع لك</h2>
+    </div>
+    <div class="branches-grid">
+      <div class="branch-card">
+        <div class="pin">📍</div>
+        <h4>فرع الرياض</h4>
+        <p>شارع الغرابي — السبت إلى الخميس<br>9ص–2م &nbsp;|&nbsp; 4م–10م</p>
+        <a class="map-link" href="https://maps.app.goo.gl/rVkgssjK3THMDdsG8" target="_blank">عرض الموقع على الخريطة ←</a>
+      </div>
+      <div class="branch-card">
+        <div class="pin">📍</div>
+        <h4>فرع جدة</h4>
+        <p>قريباً تفاصيل العنوان الكاملة<br>9ص–2م &nbsp;|&nbsp; 4م–10م</p>
+        <a class="map-link" href="#" target="_blank">عرض الموقع على الخريطة ←</a>
+      </div>
+      <div class="branch-card">
+        <div class="pin">📍</div>
+        <h4>فرع الدمام</h4>
+        <p>قريباً تفاصيل العنوان الكاملة<br>9ص–2م &nbsp;|&nbsp; 4م–10م</p>
+        <a class="map-link" href="#" target="_blank">عرض الموقع على الخريطة ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h5>أصل الفن لتنجيد وتكنولوجيا السيارات</h5>
+        <p>نقدم خدمات تنجيد وتقنيات سيارات بجودة عالية وحرفية أصيلة في الرياض، جدة، والدمام.</p>
+      </div>
+      <div>
+        <h5>روابط سريعة</h5>
+        <ul>
+          <li><a href="#services">الخدمات</a></li>
+          <li><a href="#gallery">أعمالنا</a></li>
+          <li><a href="#order">اطلب الخدمة</a></li>
+          <li><a href="#branches">الفروع</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>تواصل معنا</h5>
+        <ul>
+          <li>📞 0507624755</li>
+          <li>📍 الرياض، جدة، الدمام</li>
+          <li><a href="#" id="footerWhats" target="_blank">💬 تواصل عبر واتساب</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 أصل الفن لتنجيد وتكنولوجيا السيارات. جميع الحقوق محفوظة.</div>
+  </div>
+</footer>
+
+<a class="wa-float" id="floatWhats" href="#" target="_blank" aria-label="واتساب">💬</a>
+
+<script>
+const WHATS_NUMBER = "966507624755"; // الرقم بصيغة دولية بدون + أو صفر في البداية
+
+function baseWaLink(msg){
+  return `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+// روابط واتساب الثابتة (نفس رسالة عامة)
+const generalMsg = "السلام عليكم، أرغب بالاستفسار عن خدمات أصل الفن لتنجيد السيارات.";
+document.getElementById('navWhats').href = baseWaLink(generalMsg);
+document.getElementById('footerWhats').href = baseWaLink(generalMsg);
+document.getElementById('floatWhats').href = baseWaLink(generalMsg);
+
+// فورم الطلب -> رسالة مفصلة على واتساب
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('cname').value.trim();
+  const phone = document.getElementById('cphone').value.trim();
+  const city = document.getElementById('ccity').value;
+  const carModel = document.getElementById('ccarmodel').value.trim();
+  const service = document.getElementById('cservice').value;
+  const notes = document.getElementById('cnotes').value.trim();
+
+  let message = `السلام عليكم، أرغب بطلب خدمة من أصل الفن:\n\n`;
+  message += `👤 الاسم: ${name}\n`;
+  message += `📞 رقم التواصل: ${phone}\n`;
+  message += `📍 الفرع: ${city}\n`;
+  message += `🚗 السيارة: ${carModel}\n`;
+  message += `🛠 الخدمة المطلوبة: ${service}\n`;
+  if(notes){ message += `📝 تفاصيل إضافية: ${notes}\n`; }
+
+  window.open(baseWaLink(message), '_blank');
+});
+
+// burger menu (موبايل) — بسيط: يفتح روابط النفنجيشن في قائمة منسدلة بسيطة
+document.querySelector('.burger').addEventListener('click', function(){
+  const links = document.querySelector('.nav-links');
+  if(links.style.display === 'flex'){
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'flex';
+    links.style.position = 'absolute';
+    links.style.top = '74px';
+    links.style.right = '24px';
+    links.style.left = '24px';
+    links.style.background = 'var(--leather-dark)';
+    links.style.border = '1px solid var(--line)';
+    links.style.borderRadius = '12px';
+    links.style.padding = '20px';
+    links.style.flexDirection = 'column';
+    links.style.gap = '16px';
+  }
+});
+</script>
+
+</body>
+</html>

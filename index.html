@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أصل الفن لتنجيد وتكنولوجيا السيارات | الرياض · جدة · الدمام</title>
+<meta name="description" content="شركة أصل الفن لتنجيد وتكنولوجيا السيارات — جلد طبيعي، خياطة دقيقة، وتكنولوجيا سيارات متطورة في الرياض، جدة، والدمام.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0807;--dark:#14100d;--mid:#231810;--tan:#c9933f;--gold:#e8ab53;
+  --gold-glow:rgba(232,171,83,0.22);--copper:#b97a3d;--cream:#f3ead9;--muted:#a89474;
+  --red:#7a1f1f;--wa:#25D366;--line:rgba(243,234,217,0.1);--r:16px;--max:1180px;
+  --fd:'Cairo',sans-serif;--fb:'Tajawal',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--cream);font-family:var(--fb);line-height:1.7;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;outline:none;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.035;
+  background-image:repeating-linear-gradient(45deg,transparent 0 2px,rgba(255,255,255,.3) 2px 3px),
+  repeating-linear-gradient(-45deg,transparent 0 2px,rgba(0,0,0,.4) 2px 3px);
+  mix-blend-mode:overlay;
+}
+
+/* ===== SLIDER - 3 صور بس للسرعة ===== */
+.global-slider{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
+.hs-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease-in-out;}
+.hs-slide.active{opacity:1;}
+.hs-slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.24) saturate(1.2);}
+.hs-slide.active img{animation:kenBurns 9s ease-out forwards;}
+@keyframes kenBurns{from{transform:scale(1);}to{transform:scale(1.08);}}
+.global-slider::after{content:"";position:absolute;inset:0;z-index:1;
+background:radial-gradient(circle at center,transparent 30%,rgba(10,8,7,0.6) 100%);}
+
+section{position:relative;z-index:1;padding:96px 0;background:rgba(10,8,7,0.72);
+backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border-bottom:1px solid var(--line);}
+section.services,section.why,section.branches,.tiktok-section{background:rgba(20,16,13,0.82);}
+.hero{background:transparent;border-bottom:none;backdrop-filter:none;-webkit-backdrop-filter:none;}
+
+.stitch{display:flex;align-items:center;gap:8px;height:28px;padding:0 24px;}
+.stitch span{width:6px;height:6px;border-radius:50%;background:var(--copper);opacity:.45;flex-shrink:0;}
+.stitch::before,.stitch::after{content:"";flex:1;height:1px;
+background:repeating-linear-gradient(90deg,var(--copper) 0 6px,transparent 6px 14px);opacity:.35;}
+
+header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background .3s,box-shadow .3s;}
+header.scrolled{background:rgba(10,8,7,.97);box-shadow:0 2px 30px rgba(0,0,0,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:var(--max);margin:0 auto;}
+.logo{display:flex;align-items:center;gap:13px;}
+.logo-img{width:50px;height:50px;border-radius:50%;border:2px solid var(--gold);
+box-shadow:0 4px 15px rgba(232,171,83,0.4);object-fit:cover;background:var(--black);flex-shrink:0;}
+.logo-text strong{display:block;font-family:var(--fd);font-size:1.15rem;font-weight:900;line-height:1.1;}
+.logo-text small{display:block;font-size:.58rem;color:var(--muted);font-weight:500;}
+.nav-links{display:flex;gap:26px;}
+.nav-links a{font-family:var(--fd);font-weight:700;font-size:.93rem;padding:6px 0;position:relative;transition:color .25s;}
+.nav-links a::after{content:"";position:absolute;bottom:0;right:0;left:0;height:2px;
+background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{display:flex;align-items:center;gap:8px;background:var(--wa);color:#0b1f12;
+padding:10px 20px;border-radius:9px;font-weight:800;font-size:.9rem;
+transition:transform .25s,box-shadow .25s;box-shadow:0 6px 18px rgba(37,211,102,.25);}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.38);}
+.burger{display:none;flex-direction:column;gap:5px;background:none;padding:4px;}
+.burger span{width:26px;height:2px;background:var(--cream);border-radius:2px;}
+.mob-menu{display:none;position:fixed;inset:0;z-index:990;background:rgba(10,8,7,.98);
+flex-direction:column;align-items:center;justify-content:center;gap:30px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:var(--fd);font-size:1.5rem;font-weight:800;transition:color .25s;}
+.mob-menu a:hover{color:var(--gold);}
+.mob-close{position:absolute;top:22px;left:22px;background:none;color:var(--cream);font-size:1.8rem;}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden;}
+.particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.par{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;opacity:0;
+animation:rise var(--d,8s) var(--dl,0s) infinite ease-in;}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(.5);}20%{opacity:.7;}80%{opacity:.3;}100%{opacity:0;transform:translateY(-80vh) scale(1.3);}}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.83rem;font-weight:700;color:var(--gold);
+border:1px solid rgba(232,171,83,.32);padding:7px 18px;border-radius:30px;
+background:rgba(232,171,83,.07);margin-bottom:20px;}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.25;}}
+.hero h1{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.15;margin-bottom:20px;}
+.hero h1 .accent{color:var(--gold);display:inline-block;position:relative;}
+.hero h1 .accent::after{content:"";position:absolute;bottom:-4px;left:0;right:0;height:3px;
+background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;}
+.lead{font-size:1.08rem;color:var(--muted);max-width:520px;margin-bottom:34px;line-height:1.85;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:46px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:10px;font-weight:700;font-size:.98rem;transition:transform .25s,box-shadow .25s;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--tan));color:#1a1209;box-shadow:0 10px 28px rgba(201,147,63,.3);}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(201,147,63,.45);}
+.btn-outline{border:1.5px solid rgba(243,234,217,.25);color:var(--cream);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,171,83,.07);}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.stat b{display:block;font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--gold);}
+.stat span{font-size:.8rem;color:var(--muted);}
+.hero-mosaic{position:relative;height:500px;}
+.mc{position:absolute;border-radius:var(--r);overflow:hidden;border:1px solid rgba(232,171,83,.2);box-shadow:0 30px 60px rgba(0,0,0,.6);}
+.mc img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.mc:hover img{transform:scale(1.06);}
+.mc .sf{position:absolute;inset:8px;border:1.5px dashed rgba(232,171,83,.38);border-radius:10px;pointer-events:none;}
+.mc1{width:82%;height:76%;top:0;right:0;z-index:2;animation:fy 5s ease-in-out infinite;}
+.mc2{width:52%;height:48%;bottom:0;left:0;z-index:3;animation:fy 5s ease-in-out infinite 1.6s;}
+.mc3{width:34%;height:34%;top:6%;left:-4%;z-index:1;opacity:.75;animation:fy 5s ease-in-out infinite 3.2s;}
+@keyframes fy{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.q-badge{position:absolute;top:18px;left:-18px;z-index:4;background:var(--cream);color:var(--black);
+padding:12px 16px;border-radius:12px;font-weight:800;font-size:.88rem;
+box-shadow:0 12px 28px rgba(0,0,0,.4);display:flex;align-items:center;gap:8px;animation:fy 4s ease-in-out infinite;}
+
+.sh{text-align:center;max-width:680px;margin:0 auto 60px;}
+.sh .eyebrow{margin-bottom:18px;}
+.sh h2{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.7rem);font-weight:900;margin-bottom:16px;}
+.sh p{color:var(--muted);font-size:1.03rem;}
+
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-card{background:var(--black);border:1px solid var(--line);border-radius:var(--r);padding:32px 26px;
+position:relative;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s;}
+.svc-card::before{content:"";position:absolute;inset:0;
+background:radial-gradient(ellipse at top right,rgba(232,171,83,.07),transparent 60%);opacity:0;transition:opacity .35s;}
+.svc-card:hover{transform:translateY(-8px);border-color:rgba(232,171,83,.4);box-shadow:0 22px 50px rgba(0,0,0,.45);}
+.svc-card:hover::before{opacity:1;}
+.svc-card .num{font-family:var(--fd);font-size:.76rem;color:var(--copper);font-weight:700;letter-spacing:1.5px;margin-bottom:18px;display:block;}
+.svc-icon{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,rgba(232,171,83,.18),rgba(232,171,83,.05));
+border:1px solid rgba(232,171,83,.25);display:flex;align-items:center;justify-content:center;font-size:1.55rem;margin-bottom:18px;}
+.svc-card h3{font-family:var(--fd);font-size:1.15rem;font-weight:800;margin-bottom:10px;}
+.svc-card p{color:var(--muted);font-size:.93rem;line-height:1.7;}
+.svc-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.86rem;font-weight:700;color:var(--gold);transition:gap .2s;}
+.svc-card:hover .svc-link{gap:10px;}
+
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;}
+.gi{border-radius:14px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--line);background:var(--mid);}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .55s,filter .55s;filter:brightness(.88);}
+.gi:hover img{transform:scale(1.08);filter:brightness(1.05);}
+.g-cap{position:absolute;bottom:0;left:0;right:0;
+background:linear-gradient(to top,rgba(0,0,0,.88),transparent);
+padding:20px 14px 12px;font-family:var(--fd);font-size:.88rem;font-weight:700;
+transform:translateY(6px);transition:transform .3s;}
+.gi:hover .g-cap{transform:translateY(0);}
+.gi.tall{grid-row:span 2;}.gi.wide{grid-column:span 2;}.gi.big{grid-column:span 2;grid-row:span 2;}
+
+.lb{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.94);
+backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.lb.open{display:flex;}
+.lb-img-wrap{position:relative;}
+.lb img{max-width:90vw;max-height:84vh;border-radius:14px;box-shadow:0 40px 100px rgba(0,0,0,.7);object-fit:contain;}
+.lb-close{position:absolute;top:-46px;left:0;background:rgba(255,255,255,.12);color:#fff;border:none;
+width:40px;height:40px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s;}
+.lb-close:hover{background:rgba(255,255,255,.22);}
+.lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);color:#fff;border:none;
+width:48px;height:48px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s;z-index:1;}
+.lb-prev{right:20px;}.lb-next{left:20px;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.2);}
+.lb-cap{color:var(--cream);font-family:var(--fd);font-weight:700;font-size:1rem;background:rgba(0,0,0,.5);padding:8px 24px;border-radius:30px;}
+.lb-counter{color:var(--muted);font-size:.82rem;}
+
+.tiktok-grid{display:flex;justify-content:center;align-items:center;margin-top:20px;}
+.browser-window{background:var(--dark);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+box-shadow:0 25px 60px rgba(0,0,0,0.5);width:100%;max-width:600px;}
+.browser-bar{background:#1c1815;padding:12px 18px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line);}
+.browser-controls{display:flex;gap:6px;}
+.ctrl-dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.ctrl-dot.red{background:#ff5f56;}.ctrl-dot.yellow{background:#ffbd2e;}.ctrl-dot.green{background:#27c93f;}
+.browser-address{flex:1;background:var(--black);border-radius:6px;padding:4px 12px;font-size:0.8rem;
+color:var(--muted);text-align:left;direction:ltr;border:1px solid rgba(255,255,255,0.05);}
+.browser-body{padding:20px;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:480px;}
+.tiktok-cta{text-align:center;margin-top:36px;}
+.btn-tiktok{border:1.5px solid #ee1d52;color:#fff;transition:background-color 0.3s,border-color 0.3s;}
+.btn-tiktok:hover{background-color:#ee1d52;border-color:#ee1d52;color:#fff;}
+
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.why-vis{border-radius:20px;overflow:hidden;position:relative;min-height:460px;border:1px solid var(--line);box-shadow:0 40px 80px rgba(0,0,0,.5);}
+.why-vis img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.why-vis::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,7,.6),transparent 60%);}
+.wl{display:flex;flex-direction:column;gap:20px;}
+.wi{display:flex;gap:16px;align-items:flex-start;background:rgba(232,171,83,.04);border:1px solid rgba(232,171,83,.1);
+border-radius:14px;padding:18px 18px 16px;transition:border-color .3s,background .3s;}
+.wi:hover{border-color:rgba(232,171,83,.28);background:rgba(232,171,83,.07);}
+.chk{width:34px;height:34px;flex-shrink:0;border-radius:50%;
+background:linear-gradient(135deg,rgba(232,171,83,.2),rgba(232,171,83,.05));
+border:1px solid rgba(232,171,83,.38);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:.95rem;}
+.wi h4{font-family:var(--fd);font-weight:800;margin-bottom:4px;font-size:1.03rem;}
+.wi p{color:var(--muted);font-size:.91rem;line-height:1.65;}
+
+.ob{max-width:800px;margin:0 auto;background:var(--dark);border:1px solid var(--line);
+border-radius:22px;padding:48px;box-shadow:0 40px 80px rgba(0,0,0,.5);}
+.fi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px;
+padding:18px;background:rgba(232,171,83,.05);border:1px solid rgba(232,171,83,.14);border-radius:12px;}
+.fi{text-align:center;}
+.fi strong{display:block;font-family:var(--fd);font-size:.84rem;font-weight:800;color:var(--gold);}
+.fi span{font-size:.76rem;color:var(--muted);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:.85rem;font-weight:700;color:var(--muted);}
+.field input,.field select,.field textarea{
+  background:var(--black);border:1px solid rgba(243,234,217,.13);border-radius:10px;
+  padding:13px 15px;color:var(--cream);font-family:inherit;font-size:.94rem;outline:none;
+  transition:border-color .25s,box-shadow .25s;}
+.field input::placeholder,.field textarea::placeholder{color:rgba(168,148,116,.4);}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,171,83,.14);}
+.field select{appearance:none;cursor:pointer;}
+.field select option{background:var(--dark);}
+.field textarea{resize:vertical;min-height:90px;}
+.sub-row{display:flex;align-items:center;gap:16px;margin-top:12px;flex-wrap:wrap;}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#0b1f12;
+padding:16px 32px;border-radius:10px;font-weight:900;font-size:1.03rem;
+box-shadow:0 12px 30px rgba(37,211,102,.28);transition:transform .25s,box-shadow .25s;}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(37,211,102,.42);}
+.form-note{font-size:.82rem;color:var(--muted);max-width:260px;line-height:1.6;}
+
+.br-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.br-card{background:var(--black);border:1px solid var(--line);border-radius:var(--r);
+padding:32px 26px;text-align:center;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
+.br-card::before{content:"";position:absolute;inset:0;
+background:radial-gradient(circle at 50% 0%,rgba(232,171,83,.07),transparent 60%);opacity:0;transition:opacity .3s;}
+.br-card:hover{transform:translateY(-6px);border-color:rgba(232,171,83,.38);box-shadow:0 20px 50px rgba(0,0,0,.45);}
+.br-card:hover::before{opacity:1;}
+.pin{width:50px;height:50px;margin:0 auto 16px;border-radius:50%;
+background:linear-gradient(135deg,rgba(232,171,83,.2),rgba(232,171,83,.05));
+border:1px solid rgba(232,171,83,.32);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.35rem;}
+.br-card h4{font-family:var(--fd);font-size:1.15rem;font-weight:800;margin-bottom:10px;}
+.br-card p{color:var(--muted);font-size:.88rem;margin-bottom:16px;line-height:1.7;}
+.map-link{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-weight:700;font-size:.88rem;transition:gap .2s;}
+.map-link:hover{gap:10px;}
+
+footer{background:var(--black);border-top:1px solid var(--line);padding:68px 0 30px;position:relative;z-index:1;}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;margin-bottom:44px;}
+.fg h5{font-family:var(--fd);font-size:.93rem;font-weight:800;margin-bottom:18px;color:var(--gold);}
+.fg p{color:var(--muted);font-size:.9rem;line-height:1.8;}
+.fg ul{display:flex;flex-direction:column;gap:11px;}
+.fg ul a{color:var(--muted);font-size:.9rem;transition:color .25s,padding-right .2s;}
+.fg ul a:hover{color:var(--gold);padding-right:6px;}
+.soc{display:flex;gap:10px;margin-top:18px;}
+.sb{width:38px;height:38px;border-radius:50%;background:var(--mid);border:1px solid var(--line);
+display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:background .25s,border-color .25s;}
+.sb:hover{background:rgba(232,171,83,.15);border-color:rgba(232,171,83,.38);}
+.fb{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;
+align-items:center;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.8rem;}
+.fb a{color:var(--gold);}
+
+/* زراير عائمة */
+.waf{position:fixed;bottom:26px;left:26px;z-index:900;width:60px;height:60px;border-radius:50%;
+background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;
+font-size:1.75rem;box-shadow:0 8px 28px rgba(37,211,102,.4);animation:wap 2.5s infinite;}
+@keyframes wap{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 18px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+
+.music-btn{position:fixed;bottom:26px;left:100px;z-index:900;width:60px;height:60px;border-radius:50%;
+background:linear-gradient(135deg,var(--gold),var(--tan));color:#1a1209;
+display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+box-shadow:0 8px 28px rgba(232,171,83,.4);cursor:pointer;transition:transform .25s,box-shadow .25s;}
+.music-btn:hover{transform:scale(1.08) translateY(-2px);box-shadow:0 12px 35px rgba(232,171,83,.55);}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.rv.in{opacity:1;transform:none;}
+
+@media(max-width:980px){
+  .nav-links{display:none;}.burger{display:flex;}
+  .hero-inner{grid-template-columns:1fr;}.hero-mosaic{display:none;}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:1fr;}
+  .br-grid{grid-template-columns:1fr;}.fg{grid-template-columns:1fr;gap:26px;}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
+  .gi.big,.gi.wide,.gi.tall{grid-column:auto;grid-row:auto;}
+}
+@media(max-width:600px){
+  .hero{padding:100px 0 60px;}.hero h1{font-size:2rem;}
+  .form-row{grid-template-columns:1fr;}.svc-grid{grid-template-columns:1fr;}
+  .ob{padding:26px 18px;}.fi-row{grid-template-columns:1fr;}
+  .fb{flex-direction:column;text-align:center;}
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:200px;}
+  .music-btn{width:52px;height:52px;bottom:24px;left:88px;font-size:1.35rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== خلفية متحركة - 3 صور بس للسرعة ===== -->
+<div class="global-slider" id="globalSlider">
+  <div class="hs-slide active"><img src="images/5906479119438909154.jpg" alt="" loading="eager"></div>
+  <div class="hs-slide"><img src="images/5906479119438909163.jpg" alt="" loading="lazy"></div>
+  <div class="hs-slide"><img src="images/5906479119438909168.jpg" alt="" loading="lazy"></div>
+</div>
+
+<a class="waf" id="waFloat" href="#" target="_blank" aria-label="واتساب">💬</a>
+<audio id="bgMusic" src="audio/music.mp3" loop></audio>
+<button class="music-btn" id="musicBtn" aria-label="تشغيل الموسيقى">🔇</button>
+
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#services" onclick="closeMob()">الخدمات</a>
+  <a href="#gallery" onclick="closeMob()">أعمالنا</a>
+  <a href="#tiktok" onclick="closeMob()">فيديوهات التيك توك</a>
+  <a href="#why" onclick="closeMob()">ليه نحن</a>
+  <a href="#order" onclick="closeMob()">اطلب الخدمة</a>
+  <a href="#branches" onclick="closeMob()">الفروع</a>
+  <a href="#" id="mobWa" target="_blank" style="color:var(--wa);margin-top:8px;">💬 واتساب فوري</a>
+</div>
+
+<div class="lb" id="lb">
+  <div class="lb-img-wrap">
+    <button class="lb-close" id="lbClose">✕</button>
+    <img id="lbImg" src="" alt="">
+  </div>
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+  <button class="lb-prev" id="lbPrev">›</button>
+  <button class="lb-next" id="lbNext">‹</button>
+</div>
+
+<header id="hdr">
+  <nav>
+    <div class="logo">
+      <img class="logo-img" src="images/logo.jpg" alt="أصل الفن">
+      <div class="logo-text">
+        <strong>أصل الفن</strong>
+        <small>لتنجيد وتكنولوجيا السيارات</small>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">الخدمات</a></li>
+      <li><a href="#gallery">أعمالنا</a></li>
+      <li><a href="#tiktok">فيديوهاتنا</a></li>
+      <li><a href="#why">ليه نحن</a></li>
+      <li><a href="#order">اطلب الخدمة</a></li>
+      <li><a href="#branches">الفروع</a></li>
+    </ul>
+    <a class="nav-cta" id="navWa" href="#" target="_blank">💬 واتساب فوري</a>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="particles" id="pars"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> الرياض · جدة · الدمام</div>
+      <h1>تنجيد سيارات بحرفية<br><span class="accent">أصل الفن</span> الأصيلة</h1>
+      <p class="lead">جلد طبيعي، خياطة دقيقة، وتقنيات سيارات متطورة — نحوّل مقصورة سيارتك إلى تجربة فاخرة تبدأ من أول غرزة.</p>
+      <div class="hero-btns">
+        <a href="#order" class="btn btn-gold">📋 اطلب الخدمة الآن</a>
+        <a href="#gallery" class="btn btn-outline">🖼 شاهد أعمالنا</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b id="s1">0</b><span>سنة خبرة</span></div>
+        <div class="stat"><b id="s2">0</b><span>فروع رئيسية</span></div>
+        <div class="stat"><b id="s3">0</b><span>سيارة منجدة</span></div>
+        <div class="stat"><b id="s4">0</b><span>جلد أصلي</span></div>
+      </div>
+    </div>
+    <div class="hero-mosaic">
+      <div class="q-badge"><span>⭐</span> ضمان الجودة</div>
+      <div class="mc mc1"><img src="images/5906479119438909149.jpg" alt="تنجيد" loading="eager"><div class="sf"></div></div>
+      <div class="mc mc2"><img src="images/5906479119438909152.jpg" alt="تنجيد" loading="lazy"></div>
+      <div class="mc mc3"><img src="images/5906479119438909153.jpg" alt="تنجيد" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span><span></span><span></span></div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sh rv">
+      <div class="eyebrow"><span class="dot"></span> خدماتنا</div>
+      <h2>كل ما تحتاجه سيارتك في مكان واحد</h2>
+      <p>من تنجيد المقاعد بالجلد الطبيعي إلى أحدث تقنيات السيارات — فريقنا يقدم جودة لا تُنافَس.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card rv"><span class="num">01</span><div class="svc-icon">🪑</div><h3>تنجيد المقاعد بالجلد</h3><p>تغيير وتفصيل مقاعد بالجلد الطبيعي أو الفاخر بدقة خياطة وقصّات أصلية لموديل سيارتك.</p><a href="#order" class="svc-link">اطلب الخدمة ←</a></div>
+      <div class="svc-card rv"><span class="num">02</span><div class="svc-icon">🎛</div><h3>تنجيد الكونسول والأبواب</h3><p>تجديد الكونسول الداخلي وأبواب السيارة بخامات فاخرة تناسب طابع سيارتك.</p><a href="#order" class="svc-link">اطلب الخدمة ←</a></div>
+      <div class="svc-card rv"><span class="num">03</span><div class="svc-icon">🔧</div><h3>عزل وتعتيم السيارات</h3><p>عزل صوتي وحراري عالي الجودة مع تظليل زجاج معتمد لراحة أكبر داخل المقصورة.</p><a href="#order" class="svc-link">اطلب الخدمة ←</a></div>
+      <div class="svc-card rv"><span class="num">04</span><div class="svc-icon">📺</div><h3>تقنيات وشاشات السيارات</h3><p>تركيب أنظمة ترفيه وشاشات ذكية وأنظمة صوت بأحدث التقنيات المتوافقة مع سيارتك.</p><a href="#order" class="svc-link">اطلب الخدمة ←</a></div>
+      <div class="svc-card rv"><span class="num">05</span><div class="svc-icon">🛡</div><h3>حماية وتلميع السيارة</h3><p>حماية الطلاء بالنانو سيراميك وتلميع احترافي يحافظ على بريق سيارتك.</p><a href="#order" class="svc-link">اطلب الخدمة ←</a></div>
+      <div class="svc-card rv"><span class="num">06</span><div class="svc-icon">🧵</div><h3>تصميمات خاصة عند الطلب</h3><p>تصاميم تنجيد مخصصة بألوان وخيوط حسب رغبتك — لمسة فريدة لا تتكرر.</p><a href="#order" class="svc-link">اطلب الخدمة ←</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span><span></span><span></span></div>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sh rv">
+      <div class="eyebrow"><span class="dot"></span> معرض الأعمال</div>
+      <h2>من أعمالنا الفعلية</h2>
+      <p>نماذج حقيقية من تنجيد سيارات عملائنا — اضغط أي صورة لتكبيرها.</p>
+    </div>
+    <div class="gal-grid rv" id="galGrid">
+      <div class="gi big"  data-i="0" onclick="openLb(0)"><img src="images/5906479119438909149.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">داخلية تيفاني — تنجيد شامل</div></div>
+      <div class="gi tall" data-i="1" onclick="openLb(1)"><img src="images/5906479119438909152.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">تنجيد فاخر</div></div>
+      <div class="gi"      data-i="2" onclick="openLb(2)"><img src="images/5906479119438909153.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">تنجيد مقاعد جلد</div></div>
+      <div class="gi"      data-i="3" onclick="openLb(3)"><img src="images/5906479119438909154.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">تفاصيل الخياطة</div></div>
+      <div class="gi wide" data-i="4" onclick="openLb(4)"><img src="images/5906479119438909160.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">تنجيد كامل</div></div>
+      <div class="gi"      data-i="5" onclick="openLb(5)"><img src="images/5906479119438909163.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">تنجيد مميز</div></div>
+      <div class="gi"      data-i="6" onclick="openLb(6)"><img src="images/5906479119438909164.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">لمسة فاخرة</div></div>
+      <div class="gi tall" data-i="7" onclick="openLb(7)"><img src="images/5906479119438909165.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">تصميم خاص</div></div>
+      <div class="gi"      data-i="8" onclick="openLb(8)"><img src="images/5906479119438909166.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">جلد طبيعي</div></div>
+      <div class="gi"      data-i="9" onclick="openLb(9)"><img src="images/5906479119438909167.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">ألوان مخصصة</div></div>
+      <div class="gi wide" data-i="10" onclick="openLb(10)"><img src="images/5906479119438909168.jpg" alt="تنجيد" loading="lazy"><div class="g-cap">إبداع أصل الفن</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span><span></span><span></span></div>
+
+<section class="tiktok-section" id="tiktok">
+  <div class="wrap">
+    <div class="sh rv">
+      <div class="eyebrow"><span class="dot"></span> تغطية حية</div>
+      <h2>فيديوهات العمل على تيك توك</h2>
+      <p>شاهدوا تغطياتنا بالفيديو لعمليات التنجيد وتركيب الشاشات والعزل مباشرة من داخل ورشنا.</p>
+    </div>
+    <div class="tiktok-grid rv">
+      <div class="browser-window">
+        <div class="browser-bar">
+          <div class="browser-controls"><span class="ctrl-dot red"></span><span class="ctrl-dot yellow"></span><span class="ctrl-dot green"></span></div>
+          <div class="browser-address">https://www.tiktok.com/@moharby1</div>
+        </div>
+        <div class="browser-body">
+          <blockquote class="tiktok-embed" data-unique-id="moharby1" data-embed-type="creator" style="max-width:600px;min-width:288px;width:100%;margin:0 auto;">
+            <section><a target="_blank" href="https://www.tiktok.com/@moharby1?refer=creator_embed">@moharby1</a></section>
+          </blockquote>
+          <script async src="https://www.tiktok.com/embed.js"></script>
+        </div>
+      </div>
+    </div>
+    <div class="tiktok-cta rv">
+      <a href="https://www.tiktok.com/@moharby1?_r=1&_t=ZS-97Z94vaa2AD" class="btn btn-tiktok" target="_blank">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" style="margin-left:8px;vertical-align:middle;"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.99 1.15 2.37 1.89 3.86 2.14v3.89a9.66 9.66 0 01-5.32-1.74c-.05 3.3-.01 6.59-.03 9.89-.09 1.95-.87 3.87-2.31 5.16A7.83 7.83 0 019.23 24a8.1 8.1 0 01-6.19-2.58A8.8 8.8 0 011.01 15c.01-1.95.66-3.87 1.83-5.39a8.17 8.17 0 015.68-3.32c.11.08.17.25.17.4v3.52c-.18.04-.37.08-.55.15-1.42.5-2.6 1.59-3.13 2.99a5.1 5.1 0 00-.01 4.02 4.9 4.9 0 002.83 2.87 5.2 5.2 0 004.82-.4c1.36-.93 2.15-2.56 2.14-4.22-.01-5.02-.01-10.05-.01-15.07.72-.11 1.43-.28 2.14-.49z"/></svg>
+        دخول لحساب تيك توك
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span><span></span><span></span></div>
+
+<section class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-vis rv"><img src="images/5906479119438909154.jpg" alt="جودة أصل الفن" loading="lazy"></div>
+    <div>
+      <div class="eyebrow rv"><span class="dot"></span> ليه أصل الفن</div>
+      <h2 class="rv" style="font-family:var(--fd);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;margin-bottom:28px;">حرفية تصنع الفرق<br>في كل غرزة</h2>
+      <div class="wl">
+        <div class="wi rv"><div class="chk">✓</div><div><h4>خامات أصلية 100%</h4><p>جلوداً طبيعية وخيوطاً معتمدة لضمان متانة تدوم لسنوات طويلة.</p></div></div>
+        <div class="wi rv"><div class="chk">✓</div><div><h4>فنيون متخصصون</h4><p>فريق مدرّب على أحدث موديلات السيارات وتقنيات التنجيد العالمية.</p></div></div>
+        <div class="wi rv"><div class="chk">✓</div><div><h4>3 فروع لراحتك</h4><p>الرياض، جدة، والدمام — قريبون منك بنفس مستوى الجودة في كل فرع.</p></div></div>
+        <div class="wi rv"><div class="chk">✓</div><div><h4>تواصل واتساب فوري</h4><p>أرسل طلبك مباشرة عبر واتساب واحصل على رد سريع من فريقنا.</p></div></div>
+        <div class="wi rv"><div class="chk">✓</div><div><h4>تصاميم بألوانك المفضلة</h4><p>لأن سيارتك مميزة مثلك — نُنفذ أي لون أو نمط تختاره بدقة عالية.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span><span></span><span></span></div>
+
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="sh rv">
+      <div class="eyebrow"><span class="dot"></span> اطلب الآن</div>
+      <h2>جهّز سيارتك للتميز</h2>
+      <p>عبّي بياناتك وسيارتك وراح يتفتح واتساب برسالة جاهزة فيها كل التفاصيل فورًا.</p>
+    </div>
+    <div class="ob rv">
+      <div class="fi-row">
+        <div class="fi"><strong>📍 الرياض</strong><span>شارع الغرابي</span></div>
+        <div class="fi"><strong>🕐 أوقات الدوام</strong><span>9ص–2م | 4م–10م</span></div>
+        <div class="fi"><strong>📞 0507624755</strong><span>واتساب متاح</span></div>
+      </div>
+      <form id="orderForm">
+        <div class="form-row">
+          <div class="field"><label for="fn">الاسم الكامل *</label><input type="text" id="fn" placeholder="مثال: محمد العتيبي" required></div>
+          <div class="field"><label for="fp">رقم التواصل *</label><input type="tel" id="fp" placeholder="05xxxxxxxx" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="fc">الفرع المطلوب *</label>
+            <select id="fc" required><option value="">اختر الفرع</option><option>الرياض — شارع الغرابي</option><option>جدة</option><option>الدمام</option></select>
+          </div>
+          <div class="field"><label for="fct">نوع السيارة *</label>
+            <select id="fct" required><option value="">اختر نوع السيارة</option>
+              <option>تويوتا</option><option>لكزس</option><option>نيسان</option><option>هيونداي</option>
+              <option>كيا</option><option>مرسيدس</option><option>بي إم دبليو</option><option>أودي</option>
+              <option>رنج روفر</option><option>جيب</option><option>جي إم سي</option><option>شيفروليه</option>
+              <option>فورد</option><option>بورش</option><option>غيرها</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="fm">موديل السيارة والسنة *</label><input type="text" id="fm" placeholder="مثال: كامري 2023" required></div>
+          <div class="field"><label for="fs">الخدمة المطلوبة *</label>
+            <select id="fs" required><option value="">اختر الخدمة</option>
+              <option>تنجيد المقاعد بالجلد</option><option>تنجيد الكونسول والأبواب</option>
+              <option>تنجيد داخلي شامل</option><option>عزل وتعتيم السيارة</option>
+              <option>تقنيات وشاشات السيارات</option><option>حماية وتلميع السيارة</option>
+              <option>تصميم خاص حسب الطلب</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full"><label for="fno">تفاصيل إضافية (اختياري)</label>
+            <textarea id="fno" placeholder="مثال: عايز لون الجلد بني، والخيط ذهبي، خياطة معينية..."></textarea>
+          </div>
+        </div>
+        <div class="sub-row">
+          <button type="submit" class="btn-wa">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            إرسال الطلب عبر واتساب
+          </button>
+          <span class="form-note">سيتم تحويلك لواتساب برسالة جاهزة — اضغط "إرسال" فقط.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"><span></span><span></span><span></span><span></span><span></span></div>
+
+<section class="branches" id="branches">
+  <div class="wrap">
+    <div class="sh rv">
+      <div class="eyebrow"><span class="dot"></span> فروعنا</div>
+      <h2>زورنا في أقرب فرع لك</h2>
+    </div>
+    <div class="br-grid">
+      <div class="br-card rv"><div class="pin">📍</div><h4>فرع الرياض</h4>
+        <p>شارع الغرابي<br>السبت – الخميس<br>9ص–2م &nbsp;|&nbsp; 4م–10م</p>
+        <a class="map-link" href="https://maps.app.goo.gl/rVkgssjK3THMDdsG8" target="_blank">عرض الموقع على الخريطة ←</a>
+      </div>
+      <div class="br-card rv"><div class="pin">📍</div><h4>فرع جدة</h4>
+        <p>التفاصيل قريباً<br>السبت – الخميس<br>9ص–2م &nbsp;|&nbsp; 4م–10م</p>
+        <a class="map-link" href="#" target="_blank">عرض الموقع على الخريطة ←</a>
+      </div>
+      <div class="br-card rv"><div class="pin">📍</div><h4>فرع الدمام</h4>
+        <p>التفاصيل قريباً<br>السبت – الخميس<br>9ص–2م &nbsp;|&nbsp; 4م–10م</p>
+        <a class="map-link" href="#" target="_blank">عرض الموقع على الخريطة ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <div class="logo" style="margin-bottom:16px;">
+          <img class="logo-img" src="images/logo.jpg" alt="أصل الفن" style="width:46px;height:46px;">
+          <div class="logo-text"><strong style="font-size:1.05rem;">أصل الفن</strong><small>لتنجيد وتكنولوجيا السيارات</small></div>
+        </div>
+        <p>خدمات تنجيد وتقنيات سيارات بجودة عالية وحرفية أصيلة في الرياض، جدة، والدمام.</p>
+        <div class="soc">
+          <a class="sb" id="ftWa" href="#" target="_blank">💬</a>
+          <a class="sb" href="https://www.tiktok.com/@moharby1?_r=1&_t=ZS-97Z94vaa2AD" target="_blank" title="تيك توك">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.99 1.15 2.37 1.89 3.86 2.14v3.89a9.66 9.66 0 01-5.32-1.74c-.05 3.3-.01 6.59-.03 9.89-.09 1.95-.87 3.87-2.31 5.16A7.83 7.83 0 019.23 24a8.1 8.1 0 01-6.19-2.58A8.8 8.8 0 011.01 15c.01-1.95.66-3.87 1.83-5.39a8.17 8.17 0 015.68-3.32c.11.08.17.25.17.4v3.52c-.18.04-.37.08-.55.15-1.42.5-2.6 1.59-3.13 2.99a5.1 5.1 0 00-.01 4.02 4.9 4.9 0 002.83 2.87 5.2 5.2 0 004.82-.4c1.36-.93 2.15-2.56 2.14-4.22-.01-5.02-.01-10.05-.01-15.07.72-.11 1.43-.28 2.14-.49z"/></svg>
+          </a>
+          <a class="sb" href="#" title="إنستغرام">📸</a>
+        </div>
+      </div>
+      <div>
+        <h5>روابط سريعة</h5>
+        <ul>
+          <li><a href="#services">الخدمات</a></li><li><a href="#gallery">معرض الأعمال</a></li>
+          <li><a href="#tiktok">فيديوهات تيك توك</a></li><li><a href="#why">ليه نحن</a></li>
+          <li><a href="#order">اطلب الخدمة</a></li><li><a href="#branches">الفروع</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>تواصل معنا</h5>
+        <ul>
+          <li><a id="ftWa2" href="#" target="_blank">💬 واتساب: 0507624755</a></li>
+          <li><a href="https://maps.app.goo.gl/rVkgssjK3THMDdsG8" target="_blank">📍 الرياض — شارع الغرابي</a></li>
+          <li><a href="#">📍 جدة — قريباً</a></li>
+          <li><a href="#">📍 الدمام — قريباً</a></li>
+        </ul>
+        <p style="margin-top:16px;font-size:.8rem;">أوقات الدوام:<br>9ص – 2م | 4م – 10م</p>
+      </div>
+    </div>
+    <div class="fb">
+      <span>© 2025 أصل الفن لتنجيد وتكنولوجيا السيارات — جميع الحقوق محفوظة</span>
+      <span>صُنع بـ ❤ في المملكة العربية السعودية 🇸🇦</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const WA='966507624755';
+const waLink=m=>'https://wa.me/'+WA+'?text='+encodeURIComponent(m);
+const defMsg='السلام عليكم، أود الاستفسار عن خدمات تنجيد السيارات في أصل الفن.';
+['waFloat','navWa','mobWa','ftWa','ftWa2'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=waLink(defMsg);});
+
+document.getElementById('orderForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=document.getElementById('fn').value.trim();
+  const p=document.getElementById('fp').value.trim();
+  const c=document.getElementById('fc').value;
+  const ct=document.getElementById('fct').value;
+  const m=document.getElementById('fm').value.trim();
+  const s=document.getElementById('fs').value;
+  const no=document.getElementById('fno').value.trim();
+  if(!n||!p||!c||!ct||!m||!s){alert('يرجى تعبئة جميع الحقول المطلوبة (*)');return;}
+  const msg=`وعليكم السلام ورحمة الله وبركاته 🌟
+شكراً لتواصلك مع شركة *أصل الفن لتنجيد وتكنولوجيا السيارات*
+
+━━━━━━━━━━━━━━━━
+📋 *تفاصيل الطلب*
+━━━━━━━━━━━━━━━━
+👤 الاسم: ${n}
+📞 رقم التواصل: ${p}
+📍 الفرع المطلوب: ${c}
+🚗 نوع السيارة: ${ct} — ${m}
+🔧 الخدمة المطلوبة: ${s}
+${no?'📝 ملاحظات: '+no:''}
+━━━━━━━━━━━━━━━━
+⏰ أوقات الدوام:
+الفترة الأولى: 9:00ص – 2:00م
+الفترة الثانية: 4:00م – 10:00م
+
+📍 فرع الرياض: شارع الغرابي
+https://maps.app.goo.gl/rVkgssjK3THMDdsG8
+
+*سنتواصل معك في أقرب وقت إن شاء الله* 🙏`;
+  window.open(waLink(msg),'_blank');
+});
+
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>50));
+
+const mob=document.getElementById('mobMenu');
+document.getElementById('burger').onclick=()=>mob.classList.add('open');
+document.getElementById('mobClose').onclick=()=>mob.classList.remove('open');
+function closeMob(){mob.classList.remove('open');}
+
+// ===== سلايدر 3 صور بس =====
+const slides=document.querySelectorAll('.hs-slide');
+let cur=0;
+function goSlide(n){slides[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');}
+setInterval(()=>goSlide(cur+1),6000);
+
+// ===== لايت بوكس =====
+const imgs=[
+  {src:'images/5906479119438909149.jpg',cap:'داخلية تيفاني — تنجيد شامل'},
+  {src:'images/5906479119438909152.jpg',cap:'تنجيد فاخر'},
+  {src:'images/5906479119438909153.jpg',cap:'تنجيد مقاعد جلد'},
+  {src:'images/5906479119438909154.jpg',cap:'تفاصيل الخياطة'},
+  {src:'images/5906479119438909160.jpg',cap:'تنجيد كامل'},
+  {src:'images/5906479119438909163.jpg',cap:'تنجيد مميز'},
+  {src:'images/5906479119438909164.jpg',cap:'لمسة فاخرة'},
+  {src:'images/5906479119438909165.jpg',cap:'تصميم خاص'},
+  {src:'images/5906479119438909166.jpg',cap:'جلد طبيعي'},
+  {src:'images/5906479119438909167.jpg',cap:'ألوان مخصصة'},
+  {src:'images/5906479119438909168.jpg',cap:'إبداع أصل الفن'},
+];
+const lb=document.getElementById('lb');
+const lbImg=document.getElementById('lbImg');
+const lbCap=document.getElementById('lbCap');
+const lbCnt=document.getElementById('lbCounter');
+let lbIdx=0;
+function openLb(i){lbIdx=i;showLb();lb.classList.add('open');document.body.style.overflow='hidden';}
+function showLb(){lbImg.src=imgs[lbIdx].src;lbCap.textContent=imgs[lbIdx].cap;lbCnt.textContent=(lbIdx+1)+' / '+imgs.length;}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('lbClose').onclick=closeLb;
+lb.onclick=e=>{if(e.target===lb)closeLb();};
+document.getElementById('lbPrev').onclick=()=>{lbIdx=(lbIdx+1)%imgs.length;showLb();};
+document.getElementById('lbNext').onclick=()=>{lbIdx=(lbIdx-1+imgs.length)%imgs.length;showLb();};
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='ArrowLeft'){lbIdx=(lbIdx-1+imgs.length)%imgs.length;showLb();}
+  if(e.key==='ArrowRight'){lbIdx=(lbIdx+1)%imgs.length;showLb();}
+  if(e.key==='Escape')closeLb();
+});
+
+// ===== جسيمات =====
+(function(){
+  const c=document.getElementById('pars');
+  for(let i=0;i<30;i++){
+    const p=document.createElement('div');p.className='par';
+    p.style.cssText=`left:${Math.random()*100}%;bottom:${Math.random()*25}%;--d:${6+Math.random()*9}s;--dl:${Math.random()*9}s;width:${1+Math.random()*2.5}px;height:${1+Math.random()*2.5}px;`;
+    c.appendChild(p);
+  }
+})();
+
+// ===== ريفيل =====
+const rvEls=document.querySelectorAll('.rv');
+rvEls.forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting)el.classList.add('in');},{threshold:0.1}).observe(el));
+
+// ===== عداد =====
+function counter(el,end,suf,dur=1800){
+  let s=0,step=dur/60,inc=end/(dur/step);
+  const t=setInterval(()=>{
+    s+=inc;
+    if(s>=end){s=end;clearInterval(t);}
+    el.textContent=Math.floor(s)+suf;
+  },step);
+}
+
+const statsObs=new IntersectionObserver(([e])=>{
+  if(e.isIntersecting){
+    counter(document.getElementById('s1'),12,'+');
+    counter(document.getElementById('s2'),3,'');
+    counter(document.getElementById('s3'),5000,'+');
+    counter(document.getElementById('s4'),100,'%');
+    statsObs.disconnect();
+  }
+},{threshold:.5});
+statsObs.observe(document.querySelector('.hero-stats'));
+
+// ===== BACKGROUND MUSIC TOGGLE =====
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+let isPlaying = false;
+
+musicBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    bgMusic.pause();
+    musicBtn.textContent = '🔇';
+    musicBtn.style.animation = 'none';
+  } else {
+    bgMusic.play().then(() => {
+      musicBtn.textContent = '🎵';
+      musicBtn.style.animation = 'musicPulse 2s infinite ease-in-out';
+    }).catch(err => {
+      console.log("Audio play failed or blocked: ", err);
+    });
+  }
+  isPlaying = !isPlaying;
+});
+
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `
+  @keyframes musicPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); box-shadow: 0 12px 35px rgba(232, 171, 83, 0.6); }
+    100% { transform: scale(1); }
+  }
+`;
+document.head.appendChild(styleSheet);
+</script>
+</body>
+</html>
