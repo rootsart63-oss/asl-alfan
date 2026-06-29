@@ -173,6 +173,17 @@ box-shadow:0 25px 60px rgba(0,0,0,0.5);width:100%;max-width:600px;}
 .browser-address{flex:1;background:var(--black);border-radius:6px;padding:4px 12px;font-size:0.8rem;
 color:var(--muted);text-align:left;direction:ltr;border:1px solid rgba(255,255,255,0.05);}
 .browser-body{padding:20px;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:480px;}
+.tiktok-profile{width:100%;min-height:420px;border-radius:14px;background:
+linear-gradient(145deg,rgba(238,29,82,.14),rgba(37,244,238,.08) 45%,rgba(232,171,83,.08)),
+radial-gradient(circle at 18% 18%,rgba(37,244,238,.18),transparent 28%),
+radial-gradient(circle at 82% 22%,rgba(238,29,82,.16),transparent 30%),
+#070707;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 24px;position:relative;overflow:hidden;}
+.tiktok-profile::before{content:"";position:absolute;inset:18px;border:1px dashed rgba(255,255,255,.13);border-radius:12px;pointer-events:none;}
+.tiktok-logo{width:74px;height:74px;border-radius:20px;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;margin-bottom:22px;box-shadow:12px 12px 0 rgba(238,29,82,.55),-12px -12px 0 rgba(37,244,238,.42);}
+.tiktok-profile h3{font-family:var(--fd);font-size:1.55rem;font-weight:900;margin-bottom:8px;color:#fff;direction:ltr;}
+.tiktok-profile p{max-width:390px;color:var(--muted);font-size:.96rem;line-height:1.8;margin-bottom:24px;}
+.tiktok-open{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#111;padding:13px 24px;border-radius:10px;font-family:var(--fd);font-weight:900;transition:transform .25s,box-shadow .25s;}
+.tiktok-open:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(238,29,82,.28);}
 .tiktok-cta{text-align:center;margin-top:36px;}
 .btn-tiktok{border:1.5px solid #ee1d52;color:#fff;transition:background-color 0.3s,border-color 0.3s;}
 .btn-tiktok:hover{background-color:#ee1d52;border-color:#ee1d52;color:#fff;}
@@ -426,10 +437,16 @@ box-shadow:0 8px 28px rgba(232,171,83,.4);cursor:pointer;transition:transform .2
           <div class="browser-address">https://www.tiktok.com/@moharby1</div>
         </div>
         <div class="browser-body">
-          <blockquote class="tiktok-embed" data-unique-id="moharby1" data-embed-type="creator" style="max-width:600px;min-width:288px;width:100%;margin:0 auto;">
-            <section><a target="_blank" href="https://www.tiktok.com/@moharby1?refer=creator_embed">@moharby1</a></section>
-          </blockquote>
-          <script async src="https://www.tiktok.com/embed.js"></script>
+          <div class="tiktok-profile">
+            <div class="tiktok-logo">
+              <svg width="42" height="42" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.99 1.15 2.37 1.89 3.86 2.14v3.89a9.66 9.66 0 01-5.32-1.74c-.05 3.3-.01 6.59-.03 9.89-.09 1.95-.87 3.87-2.31 5.16A7.83 7.83 0 019.23 24a8.1 8.1 0 01-6.19-2.58A8.8 8.8 0 011.01 15c.01-1.95.66-3.87 1.83-5.39a8.17 8.17 0 015.68-3.32c.11.08.17.25.17.4v3.52c-.18.04-.37.08-.55.15-1.42.5-2.6 1.59-3.13 2.99a5.1 5.1 0 00-.01 4.02 4.9 4.9 0 002.83 2.87 5.2 5.2 0 004.82-.4c1.36-.93 2.15-2.56 2.14-4.22-.01-5.02-.01-10.05-.01-15.07.72-.11 1.43-.28 2.14-.49z"/></svg>
+            </div>
+            <h3>@moharby1</h3>
+            <p>شاهد أحدث فيديوهات التنجيد والتفصيل وتركيب تقنيات السيارات من ورشنا مباشرة على تيك توك.</p>
+            <a class="tiktok-open" href="https://www.tiktok.com/@moharby1?_r=1&_t=ZS-97Z94vaa2AD" target="_blank">
+              فتح حساب تيك توك
+            </a>
+          </div>
         </div>
       </div>
     </div>
